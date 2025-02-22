@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser"
+import connectDb from "./utils/db.js";
 dotenv.config();
 
 
@@ -20,4 +21,9 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
+app.listen(PORT, () =>{
+  connectDb();
+  console.log(`Server is running at port ${PORT}`)
+}
+  
+);
